@@ -26,10 +26,10 @@ import { asapScheduler } from 'rxjs';
         <br>
         <br>
         <!--Table-->
-        <table class="table table-striped w-auto">
+        <table class="table table-striped w-auto" *ngIf="checkVar">
         
           <!--Table head-->
-          <thead *ngIf="products">
+          <thead >
               <tr>
                   <th>ID</th>
                   <th>Name</th>
@@ -40,7 +40,7 @@ import { asapScheduler } from 'rxjs';
           <!--Table head-->
           <!--Table body-->
           <tbody>
-              <tr class="table-info" *ngFor="let product of products">
+              <tr class="table-info" *ngFor="let product of products['body']">
                   <td>{{product.id}}</td>
                   <td>{{product.name}}</td>
                   <td>{{product.price}}</td>
@@ -57,9 +57,24 @@ import { asapScheduler } from 'rxjs';
 export class reqTestComponent {
     constructor(private http: HttpClient) { }
     //URL = 'assets/test.json';
-    products;
+    products : Object = { body: [
+    ]};
+
+    checkVar(): boolean{
+        //if (typeof this.products['body'] != null && typeof this.products['body'] != 'undefined')
+        if (this.products['body'].length > 0)
+        {
+            return true;
+        }  
+        else{
+            return false;
+        }
+    }
+
     getExAppMethod1() {
-        this.http.get('http://pure-reaches-24701.herokuapp.com/getdata',
+        console.log(this.products);
+        //this.http.get('https://pure-reaches-24701.herokuapp.com/getdata',
+        this.http.get('https://pure-reaches-24701.herokuapp.com/getdata',
             {}).subscribe(response => {
                 //成功時の処理
                 console.log(response);
@@ -70,7 +85,15 @@ export class reqTestComponent {
             });
     }
     getExAppMethod2() {
-        this.http.get('http://pure-reaches-24701.herokuapp.com/greeting',
+        /*
+        var headers = new HttpHeaders()
+            .set("X-CustomHeader", "custom header")
+            .append('Content-Type', 'application/json')
+            .append('Access-Control-Allow-Headers', 'Content-Type')
+            .append('Access-Control-Allow-Methods', 'GET')
+            .append('Access-Control-Allow-Origin', '*');
+        */
+        this.http.get('https://pure-reaches-24701.herokuapp.com/greeting',
             {}).subscribe(response => {
                 //成功時の処理
                 console.log(response);
