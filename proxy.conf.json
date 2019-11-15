@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://pure-reef-73974.herokuapp.com/",
+      "secure": false,
+      "changeOrigin": "true",
+      "pathRewrite": {"^/api": ""}
+    }
+  }

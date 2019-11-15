@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Full Page Carousel itself*/
+.carousel {
+    height: 80vh;
+  }
+  
+  .carousel .carousel-inner {
+    height: 80vh;
+  }
+  
+  .carousel .carousel-inner .carousel-item,
+  .carousel .carousel-inner .active {
+    height: 80vh;
+  }
+  
+  img {
+    &.d-block {
+      height: 80vh;
+    }
+  }
+  .p-2 {
+    background-color: darkcyan;
+    text-align: center;
+    border-color: black;
+    border-width: 1px; /* this allows you to adjust the thickness */
+    border-style: solid;
+  }
+  .logo-img{
+    object-fit: cover;
+    max-width: 100%; height: auto; 
+  }
+  
+  @import "~animate.css/animate.css";
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 1000px;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 650px;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+     background: #1C2331!important;
+  }
+}
+/* Navbar animation */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.top-nav-collapse {
+  background-color: #1C2331; }
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #1C2331; } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: #1C2331; }
+
+  
