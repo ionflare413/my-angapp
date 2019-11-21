@@ -13,37 +13,53 @@ import { IntroComponent } from './intro/intro.component';
 import { FooterComponent } from './footer/footer.component';
 import { ShowCaseComponent } from './showcase/showcase.component';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
-import { Q2Component } from './q2/q2.component';
 
 
+
+
+
+//=======[***Playground***]=======
+import { agGridComponent } from './Components/agGrid';
 import { mdbPlayGround } from './Components/mdbPlayGround';
 import { inputTracking } from './Components/inputTracking';
 import { timeWatcher } from './Components/timeWatcher';
 import { reqTestComponent } from './Components/reqtest.component';
 import { pageNotFound } from './Components/pageNotFound';
+import { Q2Component } from './q2/q2.component';
 
+//=======[***UserManagement***]=======
+import { UserRegisterComponent } from './user/register/user.register.component';
+import { UserListComponent } from './user/list/user.list.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { NgwWowModule } from 'ngx-wow';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
 import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 
 const appRoutes: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'playground', component: mdbPlayGround },
-  { path: 'it', component: inputTracking },
-  { path: 'tw', component: timeWatcher },
-  { path: 'rq', component: reqTestComponent },
+
+  { path: 'pg/mdb', component: mdbPlayGround },
+  { path: 'pg/it', component: inputTracking },
+  { path: 'pg/tw', component: timeWatcher },
+  { path: 'pg/rq', component: reqTestComponent },
+  { path: 'pg/ag', component: agGridComponent },
+
   { path: '', component: IntroComponent },
+  { path: 'user/register', component: UserRegisterComponent },
+  { path: 'user/list', component: UserListComponent },
   { path: '**', component: pageNotFound }
 
 ];
 
 @NgModule({
   declarations: [
+    agGridComponent,
+    UserListComponent,
+    UserRegisterComponent,
     Q2Component,
     AppComponent,
     IntroComponent,
@@ -65,7 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpModule,
     HttpClientModule,
-    //MatProgressSpinnerModule,
+    AgGridModule.withComponents([]),
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

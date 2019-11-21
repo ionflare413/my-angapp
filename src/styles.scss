@@ -81,4 +81,5 @@ header,
 .page-footer {
   background-color: #1C2331; }
 
-  
+  @import "~@ag-grid-community/all-modules/dist/styles/ag-grid.css";
+  @import "~@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
