@@ -42,8 +42,14 @@ export class UserListComponent {
     }
   
     onCellDoubleClicked(e : any){
-        console.log(e.data);
+        //console.log(e.data);
         let redirectUrl = "/user/register?id=" + e.data.id
+        this.router.navigateByUrl(redirectUrl);
+    }
+
+    onNewUserClicked(){
+        //console.log(e.data);
+        let redirectUrl = "/user/register?id=" + 0
         this.router.navigateByUrl(redirectUrl);
     }
 

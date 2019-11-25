@@ -4,7 +4,7 @@
   <form>
     <!-- Grid row -->
     <div class="form-group row justify-content-center">
-      <div class="col-12 col-sm-6 col-lg-8">NO {{ this.selectedUser.id }}</div>
+      <div class="col-12 col-sm-6 col-lg-8">{{ genHeader() }}</div>
     </div>
     <!-- Grid row -->
     <div class="form-group row">
@@ -12,7 +12,7 @@
       <div class="col-sm-3"></div>
       <label class="col-sm-1  col-form-label">名前</label>
       <div class="col-sm-6">
-        <input mdbInput class="form-control" placeholder="Name" [value]="selectedUser.name">
+        <input mdbInput class="form-control" placeholder="Name" id="userName" [value]="userInfo.name">
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -22,23 +22,15 @@
       <label class="col-sm-1  col-form-label">所族</label>
       <div class="col-sm-6">
         <div *ngIf="isLoaded; else Loading">
-          <select class="browser-default custom-select">
-            <option [selected]="selectMatchedDropBox(product.id)" *ngFor="let product of groupMember">
+          <select class="browser-default custom-select" #t (change)="getSelectedValuegetSelectedValue(t.value)">
+            <option [selected]="selectMatchedDropBox(product.id)"  [value]="product.id" *ngFor="let product of groupMember">
               {{product.name}}
             </option>
           </select>
-          <!--
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-              -->
         </div>
       </div>
       <div class="col-sm-2"></div>
     </div>
-
     <br><br>
     <!-- Grid row -->
     <div class="form-group row">
@@ -53,20 +45,22 @@
     <div class="form-group row">
       <div class="col-sm-3"></div>
       <label class="col-sm-1  col-form-label">生年月日</label>
-      <div class="col-sm-3">
-        <input [disabled]="!isMoreInfo_Checked" type="date"   class="form-control"
-          mdbInput>
-          <input [matDatepicker]="myDatepicker">
-<mat-datepicker #myDatepicker></mat-datepicker>
+      <div class="col-sm-5 text-left">
+        <div>
+           <input matInput [matDatepicker]="myDatepicker" [disabled]="!isMoreInfo_Checked" date="true" [value]="FormPickerDate.value" (dateChange)="changeDateValue($event)">
+           <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </div>
+
       </div>
-      <div class="col-sm-5"></div>
+      <div class="col-sm-6"></div>
     </div>
     <!-- Grid row -->
     <div class="form-group row">
       <div class="col-sm-3"></div>
       <label class="col-sm-1  col-form-label">住所</label>
       <div class="col-sm-6">
-        <input [disabled]="!isMoreInfo_Checked" [value]="selectedUser.address" mdbInput class="form-control"
+        <input [disabled]="!isMoreInfo_Checked" id="userAddress" [value]="userInfo.address" mdbInput class="form-control"
           placeholder="Address">
       </div>
       <div class="col-sm-2"></div>
@@ -76,9 +70,9 @@
       <div class="col-sm-3"></div>
       <label class="col-sm-1  col-form-label">備考</label>
       <div class="col-sm-6">
-        <textarea [disabled]="!isMoreInfo_Checked" [value]="selectedUser.note" 
+        <textarea [disabled]="!isMoreInfo_Checked" id="userNote"[value]="userInfo.note" 
         formControlName="contactFormMessage"
-          class="form-control rounded-0" mdbInput id="exampleFormControlTextarea2" rows="3"
+          class="form-control rounded-0" mdbInput rows="3"
           placeholder="Message"></textarea>
       </div>
       <div class="col-sm-2"></div>

@@ -31,7 +31,9 @@ import { Q2Component } from './q2/q2.component';
 import { UserRegisterComponent } from './user/register/user.register.component';
 import { UserListComponent } from './user/list/user.list.component';
 
+import { DatePipe } from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { NgwWowModule } from 'ngx-wow';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -82,7 +84,15 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
+
     MDBBootstrapModule.forRoot(),
+
+    //===[***angular material***]
+    MatDatepickerModule, //Because datepicker from MDBootstrap needed to be paid
+    MatNativeDateModule, 
+    MatFormFieldModule,
+    
+
     RouterModule.forRoot(
       appRoutes,
       { //useHash: true, 
@@ -91,7 +101,7 @@ const appRoutes: Routes = [
     )
 
   ],
-  providers: [],
+  providers: [MatDatepickerModule, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

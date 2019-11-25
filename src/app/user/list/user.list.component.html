@@ -2,8 +2,13 @@
     <br><br><br><br>
     <div class="row d-flex justify-content-center">
 
-        <h1>Test ag-Grid</h1>
+        <h1>User List</h1>
+        
+        
     </div>
+    <div class="row d-flex justify-content-center">
+            <button type="button" mdbBtn color="primary" (click)="onNewUserClicked()">+ USER +</button>
+        </div>
     <div class="row d-flex justify-content-center">
 
         <div *ngIf="isLoaded; else Loading">
