@@ -7,10 +7,10 @@ export const environment = {
       
       getUser : 'get_user',
       getUserById : 'get_userById',
-      getgroupMember : 'get_groupMember',
+      getGroupMember : 'get_groupMember',
 
       updateUserById : 'update_userById',
     }
   }
-  
 };
+

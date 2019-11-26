@@ -4,7 +4,7 @@ import { Http, Response, RequestOptions } from "@angular/http";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { asapScheduler } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 
 @Injectable()
 @Component({
@@ -15,7 +15,7 @@ import { asapScheduler } from 'rxjs';
       <br><br><br><br>
         Angular <=> Webservice <=> Database
       <br>
-      Webservice : http://pure-reaches-24701.herokuapp.com/
+      Webservice : https://pure-reaches-24701.herokuapp.com/
       <br>
       Mysql : https://remotemysql.com/
       <br>
@@ -40,7 +40,7 @@ import { asapScheduler } from 'rxjs';
           <!--Table head-->
           <!--Table body-->
           <tbody>
-              <tr class="table-info" *ngFor="let product of products['body']">
+              <tr class="table-info" *ngFor="let product of products">
                   <td>{{product.id}}</td>
                   <td>{{product.name}}</td>
                   <td>{{product.price}}</td>
@@ -57,8 +57,7 @@ import { asapScheduler } from 'rxjs';
 export class reqTestComponent {
     constructor(private http: HttpClient) { }
     //URL = 'assets/test.json';
-    products : Object = { body: [
-    ]};
+    products : Object = [];
 
     checkVar(): boolean{
         //if (typeof this.products['body'] != null && typeof this.products['body'] != 'undefined')
@@ -74,7 +73,7 @@ export class reqTestComponent {
     getExAppMethod1() {
         console.log(this.products);
         //this.http.get('https://pure-reaches-24701.herokuapp.com/getdata',
-        this.http.get('https://pure-reaches-24701.herokuapp.com/getdata',
+        this.http.get( environment.api.baseUrl + 'getdata',
             {}).subscribe(response => {
                 //成功時の処理
                 console.log(response);
@@ -93,7 +92,7 @@ export class reqTestComponent {
             .append('Access-Control-Allow-Methods', 'GET')
             .append('Access-Control-Allow-Origin', '*');
         */
-        this.http.get('https://pure-reaches-24701.herokuapp.com/greeting',
+        this.http.get( 'greeting',
             {}).subscribe(response => {
                 //成功時の処理
                 console.log(response);
