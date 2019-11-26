@@ -1,6 +1,6 @@
 <!-- Default horizontal form -->
 <div class="container" align="center">
-  <br><br><br><br><br>
+  <br><br><br><br><br><br>
   <form>
     <!-- Grid row -->
     <div class="form-group row justify-content-center">
@@ -22,7 +22,7 @@
       <label class="col-sm-1  col-form-label">所族</label>
       <div class="col-sm-6">
         <div *ngIf="isLoaded; else Loading">
-          <select class="browser-default custom-select" #t (change)="getSelectedValuegetSelectedValue(t.value)">
+          <select class="browser-default custom-select" #t (change)="getSelectedValue(t.value)">
             <option [selected]="selectMatchedDropBox(product.id)"  [value]="product.id" *ngFor="let product of groupMember">
               {{product.name}}
             </option>
@@ -87,6 +87,9 @@
   </form>
   <!-- Default horizontal form -->
 </div>
+
+
+
 
 <!--[NG Template]-->
 <ng-template #Loading>

@@ -4,7 +4,19 @@
 
 
 export const environment = {
-  production: false
+  production: false,
+  api : {
+    baseUrl: 'http://localhost:8080/',
+    endPoint : {
+      newUser : 'create_user',
+      
+      getUser : 'get_user',
+      getUserById : 'get_userById',
+      getGroupMember : 'get_groupMember',
+
+      updateUserById : 'update_userById',
+    }
+  }
 };
 
 /*

@@ -4,7 +4,7 @@ import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
-
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-user-list',
@@ -27,10 +27,10 @@ export class UserListComponent {
 
     rowData;
     ngOnInit() {
-        this.http.get('http://localhost:8080/get_user').subscribe(usrlst => {
+        this.http.get(environment.api.baseUrl+ environment.api.endPoint.getUser).subscribe(usrlst => {
             this.userList = usrlst;
             this.rowData = usrlst;
-            this.http.get('http://localhost:8080/get_groupMember').subscribe(grpMem => {
+            this.http.get(environment.api.baseUrl + environment.api.endPoint.getGroupMember).subscribe(grpMem => {
                 this.groupMemberList = grpMem;
                 for (let i = 0; i < this.userList.length; i++) {
                     var grpInfo  = _.find(this.groupMemberList, { 'id': this.userList[i].groupMemberId });

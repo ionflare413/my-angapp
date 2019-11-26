@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms'; //for DatePicker
 import { DatePipe } from '@angular/common';
 import { debug } from 'util';
-
+import { environment } from '../../../environments/environment';
 @Injectable()
 @Component({
     selector: 'app-user-register',
@@ -68,7 +68,8 @@ export class UserRegisterComponent {
 
             }
             else{
-                let reqUrl = "http://localhost:8080/get_userById?id=" + this.selectedId;
+                let reqUrl = environment.api.baseUrl + environment.api.endPoint.getUserById
+                 + "?id=" + this.selectedId;
                 this.http.get(reqUrl).subscribe(user => {
                     this.userInfo = user[0];
                     this.initValCheckBox();
@@ -81,7 +82,7 @@ export class UserRegisterComponent {
                 });
             }
         });
-        this.http.get('http://localhost:8080/get_groupMember',
+        this.http.get(environment.api.baseUrl + environment.api.endPoint.getGroupMember,
             {}).subscribe(response => {
                 //成功時の処理
                 //console.log(response);
@@ -154,11 +155,11 @@ export class UserRegisterComponent {
         //console.log(datareq);
         if(this.userInfo.id != 0)
         {
-            apiURL = "http://localhost:8080"+"/update_userById";
+            apiURL = environment.api.baseUrl + environment.api.endPoint.updateUserById;
         }
         else
         {
-            apiURL = "http://localhost:8080"+"/create_user";
+            apiURL = environment.api.baseUrl + environment.api.endPoint.newUser;
         }
 
         this.http.post(apiURL,
