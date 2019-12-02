@@ -11,15 +11,12 @@
             <button type="button" mdbBtn color="primary" (click)="onNewUserClicked()">+ USER +</button>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-
+    <div class="row d-flex justify-content-center" style="height: 500px">
         <div *ngIf="isLoaded; else Loading">
             <ag-grid-angular style="width: 700px; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
                 [columnDefs]="columnDefs" [modules]="modules" (cellDoubleClicked)="onCellDoubleClicked($event)">
             </ag-grid-angular>
         </div>
-
-
     </div>
 </div>
 <!--[NG Template]-->
