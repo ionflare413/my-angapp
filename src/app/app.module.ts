@@ -84,7 +84,6 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
-
     MDBBootstrapModule.forRoot(),
 
     //===[***angular material***]
